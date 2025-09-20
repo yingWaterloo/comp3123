@@ -22,15 +22,15 @@ const server = http.createServer((req, res) => {
             
         }
 
-        if (req.url === '/employees') {
+        if (req.url === '/employee') {
             //TODO - Display all details for employees in JSON format
-            const employees = Employee.getAllEmployees();
+            const employee = Employee.getAllEmployees();
             res.writeHead(200, {'Content-Type':'application/json'});
-            res.end(JSON.stringify(employees));
+            res.end(JSON.stringify(employee));
             //console.log(JSON.stringify(employees));
         }
 
-        if (req.url === '/employees/names') {
+        if (req.url === '/employee/names') {
             //TODO - Display only all employees {first name + lastname} in Ascending order in JSON Array
             //e.g. [ "Ash Lee", "Mac Mohan", "Pritesh Patel"]
             const names = Employee.concatenate_first_last_name(Employee.getAllEmployees()).sort();
@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
            // console.log(JSON.stringify(names));
         }
 
-        if (req.url === '/employees/totalsalary') {
+        if (req.url === '/employee/totalsalary') {
             //TODO - Display Sum of all employees salary in given JSON format 
             //e.g. { "total_salary" : 100 } 
             const totalsalary =  Employee.CalculateTotalSalary(Employee.getAllEmployees());
